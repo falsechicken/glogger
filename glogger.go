@@ -16,7 +16,7 @@ var debugMode = false
 
 //LogMessage Logs a message to the console.
 func LogMessage(level int, message string) {
-	if level == Debug {
+	if level == Debug && debugMode {
 		fmt.Println(time.Now().String() + " | DEBUG: " + message)
 	}
 	if level == Info {
