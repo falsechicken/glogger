@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+//Define the log level of the message.
 const (
 	Debug = iota
 	Info
