@@ -1,11 +1,12 @@
+// Package glogger provides logging functions with a debug mode switch
+// to enable or disable debug messages from printing. Aka verbose mode.
 package glogger
 
 import (
-	"fmt"
-	"time"
+	"log"
 )
 
-//Define the log level of the message.
+// Define the log level of the message.
 const (
 	Debug = iota
 	Info
@@ -15,23 +16,23 @@ const (
 
 var debugMode = false
 
-//LogMessage Logs a message to the console.
+// LogMessage Logs a message to the console.
 func LogMessage(level int, message string) {
 	if level == Debug && debugMode {
-		fmt.Println(time.Now().Format(time.RFC822) + " | DEBUG: " + message)
+		log.Println("DEBUG: " + message)
 	}
 	if level == Info {
-		fmt.Println(time.Now().Format(time.RFC822) + " | INFO: " + message)
+		log.Println("INFO: " + message)
 	}
 	if level == Warning {
-		fmt.Println(time.Now().Format(time.RFC822) + " | WARNING: " + message)
+		log.Println("WARNING: " + message)
 	}
 	if level == Error {
-		fmt.Println(time.Now().Format(time.RFC822) + " | DEBUG: " + message)
+		log.Fatalln("ERROR: " + message)
 	}
 }
 
-//SetDebugMode enables or disables debug messages from being printed to the console.
+// SetDebugMode enables or disables debug messages from being printed to the console.
 func SetDebugMode(dMode bool) {
 	debugMode = dMode
 }
